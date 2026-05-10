@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GPT-Image-2 图片生成</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- 顶部导航栏 -->
+  <header class="header">
+    <h1>GPT-Image-2</h1>
+    <p class="subtitle">AI 图片生成工具</p>
+  </header>
+
+  <main class="container">
+    <!-- 功能切换标签 -->
+    <div class="tabs">
+      <button class="tab active" data-tab="generate">文生图</button>
+      <button class="tab" data-tab="edit">图片编辑</button>
+    </div>
+
+    <!-- ====== 文生图面板 ====== -->
+    <div id="panel-generate" class="panel active">
+      <div class="form-group">
+        <label for="gen-prompt">描述你想生成的图片</label>
+        <textarea id="gen-prompt" placeholder="例如：一只穿着太空服的猫咪坐在月球上，背景是地球，写实风格，高清"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="gen-size">图片尺寸</label>
+          <select id="gen-size">
+            <option value="1024x1024">1024x1024（正方形）</option>
+            <option value="1536x1024">1536x1024（横版）</option>
+            <option value="1024x1536">1024x1536（竖版）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="gen-quality">图片质量</label>
+          <select id="gen-quality">
+            <option value="high">高质量</option>
+            <option value="medium">中等</option>
+            <option value="low">低（速度快）</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="gen-btn" class="btn-primary">生成图片</button>
+    </div>
+
+    <!-- ====== 图片编辑面板 ====== -->
+    <div id="panel-edit" class="panel">
+      <div class="form-group">
+        <label>上传要编辑的图片</label>
+        <div id="upload-area" class="upload-area">
+          <input type="file" id="edit-file" accept="image/png,image/jpeg,image/webp" hidden>
+          <p id="upload-text">点击或拖拽图片到此处上传</p>
+          <img id="edit-preview" class="preview-img" style="display:none">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="edit-prompt">编辑描述</label>
+        <textarea id="edit-prompt" placeholder="例如：在图片中间添加一个沙滩球"></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="edit-size">输出尺寸</label>
+          <select id="edit-size">
+            <option value="1024x1024">1024x1024（正方形）</option>
+            <option value="1536x1024">1536x1024（横版）</option>
+            <option value="1024x1536">1024x1536（竖版）</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="edit-quality">图片质量</label>
+          <select id="edit-quality">
+            <option value="high">高质量</option>
+            <option value="medium">中等</option>
+            <option value="low">低（速度快）</option>
+          </select>
+        </div>
+      </div>
+
+      <button id="edit-btn" class="btn-primary">开始编辑</button>
+    </div>
+
+    <!-- 结果展示区 -->
+    <div id="result" class="result" style="display:none">
+      <h3>生成结果</h3>
+      <img id="result-img" class="result-img">
+      <div class="result-actions">
+        <a id="download-btn" class="btn-secondary" download="gpt-image-2.png">下载图片</a>
+        <button id="regenerate-btn" class="btn-secondary">重新生成</button>
+      </div>
+    </div>
+
+    <!-- 加载状态 -->
+    <div id="loading" class="loading" style="display:none">
+      <div class="spinner"></div>
+      <p>正在生成中，请稍候...</p>
+    </div>
+
+    <!-- 错误提示 -->
+    <div id="error-msg" class="error-msg" style="display:none"></div>
+  </main>
+
+  <footer class="footer">
+    <p>Powered by UCloud ModelVerse / GPT-Image-2</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>

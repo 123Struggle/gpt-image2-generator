@@ -34,6 +34,10 @@ function postMultipart(apiUrl, authKey, fields) {
         }
       });
     });
+    req.setTimeout(8000, () => {
+      req.destroy();
+      reject(new Error('请求超时（8秒），请尝试使用低质量或中等质量'));
+    });
     req.on('error', reject);
     req.write(body);
     req.end();

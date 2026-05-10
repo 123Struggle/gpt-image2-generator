@@ -23,7 +23,7 @@ module.exports = async (req, res) => {
 
   try {
     const response = await axios.post(
-      'https://model.mllight.com/v1/chat/completions',
+      'https://api.modelverse.cn/v1/chat/completions',
       {
         model: 'gpt-image-1',
         messages: [{ role: 'user', content: prompt }],

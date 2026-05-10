@@ -2,15 +2,8 @@
   "name": "gpt-image2-generator",
   "version": "1.0.0",
   "description": "GPT-Image-2 AI图片生成网站",
-  "main": "server.js",
-  "scripts": {
-    "start": "node server.js",
-    "dev": "node --watch server.js"
-  },
+  "private": true,
   "dependencies": {
-    "dotenv": "^16.4.5",
-    "express": "^4.21.0",
-    "form-data": "^4.0.5",
-    "multer": "^1.4.5-lts.1"
+    "axios": "^1.7.2"
   }
 }

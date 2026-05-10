@@ -4,6 +4,6 @@
   "description": "GPT-Image-2 AI图片生成网站",
   "private": true,
   "dependencies": {
-    "axios": "^1.7.2"
+    "form-data": "^4.0.5"
   }
 }
